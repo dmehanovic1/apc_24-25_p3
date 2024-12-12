@@ -5,7 +5,7 @@ GMII (eng. *Gigabit media-independent interface*) je sučelje za prenos podataka
 # Opis ulaznih i izlaznih signala
 Označimo komponentu koju modeliramo i imamo za cilj implementirati sa MY_GMII_TX. 
 
-Ulazni signali u modul su dati i tablici ispod.
+Ulazni signali u modul su dati u tablici ispod.
 
 |Signal|Opis|
 |--|:-----:|
