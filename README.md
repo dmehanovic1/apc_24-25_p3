@@ -1,5 +1,5 @@
 # Uvod 
-Zadatak projekta je modelirati i implementirati GMII predajni interfejs koji putem ulaznog 64-bitnog Avalon-ST interfejsa prima odlazni Ethernet okvir (počinje odredišnjom adresom a završava FCS poljem), te na izlazni GMII interfejs generiše preambulu, SFD te oktete odlaznog Ethernet okvira.
+Zadatak projekta je modelirati i implementirati GMII predajni interfejs koji putem ulaznog 64-bitnog Avalon-ST interfejsa prima odlazni Ethernet okvir (počinje odredišnom adresom a završava FCS poljem), te na izlazni GMII interfejs generiše preambulu, SFD te oktete odlaznog Ethernet okvira.
 
 GMII (eng. *Gigabit media-independent interface*) je sučelje za prenos podataka između MAC i PHY kontrolera. Podaci se prenose u oktetima od LSB do MSB, pri čemu se za generisanje takta koristi frekvencija 125 MHz. [ref_predavanje] Logika se obavlja na uzlaznu ivicu taktnog signala.
 # Opis ulaznih i izlaznih signala
