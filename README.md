@@ -10,21 +10,20 @@ Ulazni signali u modul su dati u tablici ispod.
 |Signal|Opis|
 |--|:-----:|
 |avalon_data [63:0]	|Signal koji sadrži podatke koji se prenose.|
-|avalon_error|	Indikator greške u prenosu podataka u trenutnom ciklusu.|
 avalon_valid|	Indikator validnih podataka|
 avalon_empty|	Indikator broja simbola koji su ostali prazni prilikom prenosa.|
 avalon_endofpacket|	Indikator kraja paketa.|
 avalon_startofpacket|	Indikator početka paketa.|
-gmii_reset|	Signal za reset|
-gmii_clk|	Clock signal frekvencije 125 MHz|
+reset|	Signal za reset|
+clk|	Clock signal frekvencije 125 MHz|
 
 Izlazni signali modula su dati u tablici ispod:
 |Signal|Opis|
 |------------|:-----:|
 gmii_txd [7:0]|	Transmitirani podaci|
 gmii_txen|	Indikacija aktivne transmisije|
-gmii_txer|	Indikacija greške u prenosu podatka|
-gmii_ready|	Indikacija da je prijemnik spreman za prijem podataka od strane izvora. |
+gmii_clk|	Clock signal frekvencije 125 MHz|
+avalon_clk|	Clock signal frekvencije 125/8 MHz|
 
 Za opis signala korišteni su opisi Avalon-ST sučelja, te GMII sučelja, koji se mogu pronaći u [1] i [2].
 
