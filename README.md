@@ -28,12 +28,7 @@ gmii_ready|	Indikacija da je prijemnik spreman za prijem podataka od strane izvo
 
 Za opis signala korišteni su opisi Avalon-ST sučelja, te GMII sučelja, koji se mogu pronaći u [1] i [2].
 
-# Logika rada modula
-Postavljanjem *gmii_reset* signala na logičku jedinicu, vrši se incijalizacija interne logičke strukture modula bazirane na konačnim automatima, te incijalizacija početnih vrijednosti ulaznih signala. 
 
-Po prijemu *avalon_startofpacket*, te *avalon_valid* signala, modul dobija indikaciju početka novog Ethernet okvira. Tada modul generira preambulu (7B sačinjenih od vrijednosti 0x55) te SFD (eng. *Start Frame Delimiter*) (1B vrijednosti 0xD5), te vrši njihovu transmisiju putem *gmii_txd* signala. Bitno je primijetiti da je potrebno 8 takt intervala za prenos preambule i SFD-a, obzirom da modul šalje 1B podataka po takt intervalu. 
-
-Generiranjem preambule i SFD-a, te njihovom transmisijom, počinje proces serijalizacije ulazne 64-bitne riječi sa Avalon-ST sučelja koja sadrži Ethernet okvir, čime se sukcesivno prenosi bajt po bajt ulaznog signala, dok se ne prenese cijeli sadržaj Ethernet okvira. 
 
 # Literatura
 [1] E.Kaljić, "Predavanje 7" iz predmeta Arhitekture paketskih čvorišta, ak. 2024/2025.
