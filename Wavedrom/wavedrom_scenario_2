@@ -1,0 +1,19 @@
+
+{ signal: [
+   { name: 'clk',   wave: 'p........................X'},
+   { name: 'reset',   wave: '10.......................X'},
+   
+   { name: 'avalon_clk', wave: 'p....', period: 8, phase: 7}, 
+   { name: 'avalon_data', wave: 'x4.......3.......xX.......', data: ["D0-D7", "D8-D13" ]},
+   { name: 'avalon_empty', wave: 'x........2.......xX.......', data: '2'},
+   { name: 'avalon_startofpacket', wave: '01.......0...............X'},
+   { name: 'avalon_endofpacket', wave: '0........1.......0.......X'},
+   { name: 'avalon_valid', wave: '01...............0.......X'},
+   
+   { name: 'gmii_clk', wave: 'p.........................'},
+   { name: 'gmii_txd [7:0]', wave: 'x5555555544444444333333xxx', data: ["P1", "P2", "P3", "P4", "P5", "P6", "P7", "SFD", "D0", "D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9","D10","D11", "D12","D13"]},
+   { name: 'gmii_txen', wave: '01.....................0..'},
+     { name: 'interval_state', wave: '==.......=.............=..', data: ["IDLE","SEND_HEAD","SEND_DATA","IDLE"]},
+
+,
+], config: { hscale: 0.3 }} 
