@@ -30,7 +30,7 @@ Za opis signala korišteni su opisi Avalon-ST sučelja, te GMII sučelja, koji s
 # Način rada
 Način rada modula opisan je sljedećim dijagramom:
 
-![Slika 1](Wavedrom/wavedrom_scenario_1.png "Wavedrom")
+![Slika 1](Wavedrom/wavedrom_scen_1.png "Wavedrom")
 
 # Literatura
 [1] E.Kaljić, "Predavanje 7" iz predmeta Arhitekture paketskih čvorišta, ak. 2024/2025.
