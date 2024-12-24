@@ -39,6 +39,8 @@ Scenario 2: Transmisija podataka čija je dužina djeljiva sa 8 sa ostatkom.
 Scenario 3: Transmisija podataka uz period nevalidnih podataka tokom transmisije.
 ![Slika 3](Wavedrom/wavedrom_scen_3.png "Wavedrom3")
 
+# Konačni automat 
+![Slika 4](FSM.png "FSM")
 # Literatura
 [1] E.Kaljić, "Predavanje 7" iz predmeta Arhitekture paketskih čvorišta, ak. 2024/2025.
 
