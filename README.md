@@ -41,7 +41,7 @@ Scenario 3: Transmisija podataka uz period nevalidnih podataka tokom transmisije
 
 # Konačni automat 
 ![Slika 4](FSM/fsm_dijagram.png "FSM")
-![Slika 4](FSM.png "FSM")
+
 # Literatura
 [1] E.Kaljić, "Predavanje 7" iz predmeta Arhitekture paketskih čvorišta, ak. 2024/2025.
 
