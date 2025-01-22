@@ -4,6 +4,15 @@ USE IEEE.NUMERIC_STD.ALL;
 
 ENTITY gmii_transmitter IS
 PORT (
+	part0 : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+	part1 : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+	part2 : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+	part3 : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+	part4 : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+	part5 : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+	part6 : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+	part7 : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+	data_counter : OUT integer range 0 to 255 := 0;
 	clk : IN STD_LOGIC;
 	reset : IN STD_LOGIC;
 	avalon_clk : OUT STD_LOGIC;
@@ -24,6 +33,7 @@ ARCHITECTURE arch OF gmii_transmitter IS
 	TYPE STATE_TYPE IS (IDLE,SEND_HEAD,SEND_DATA,SEND_ERROR);
 	SIGNAL current_state: STATE_TYPE;
 BEGIN
+
 	internal_counter <= (OTHERS => '0');
 	counter: PROCESS(reset, clk)
 	BEGIN
@@ -41,6 +51,7 @@ BEGIN
 	
 	fsm: PROCESS(ALL)
 	BEGIN
+		
 		IF reset = '1' THEN
 			current_state <= IDLE;
 		ELSIF avalon_startofpacket = '1' and avalon_valid = '1' THEN
@@ -59,12 +70,61 @@ BEGIN
 	
 	output_signals: PROCESS(ALL)
 	BEGIN
+		IF rising_edge (avalon_clk ) THEN 
+			part7 <= avalon_data(7 downto 0);       
+			part6 <= avalon_data(15 downto 8);      
+			part5 <= avalon_data(23 downto 16);     
+			part4<= avalon_data(31 downto 24);  
+			part3<= avalon_data(39 downto 32);     
+			part2 <= avalon_data(47 downto 40);     
+			part1 <= avalon_data(55 downto 48);     
+			part0 <= avalon_data(63 downto 56);     
 		CASE current_state IS
 			WHEN IDLE =>
-				
+				gmii_txen <= '0';
+				gmii_txer <='0';
+				avalon_endofpacket <= '0';
+				avalon_valid <= '0';
 			WHEN SEND_HEAD =>
+				IF internal_counter = b"111" THEN 
+						gmii_txd <= x"d5";
+				ELSE	
+						gmii_txd <= x"55";
+				gmii_txen= <= '1';
+				avalon_endofpacket <= '0';
+				avalon_valid <= '1';
+				gmii_txer <='0';
 			WHEN SEND_DATA =>
-			WHEN SEND_ERROR 
+					IF rising_edge (gmii_clk) THEN 
+						IF data_counter = 0 THEN 
+							gmii_txd <= part0;
+						ELSIF data_counter = 1 THEN 
+							gmii_txd = part1;
+						ELSIF data_counter = 2 THEN 
+							gmii_txd = part2;
+						ELSIF data_counter = 3 THEN 
+							gmii_txd = part3;
+						ELSIF data_counter = 4 THEN 
+							gmii_txd = part4;
+						ELSIF data_counter = 5 THEN 
+							gmii_txd = part5;
+						ELSIF data_counter = 6 THEN 
+							gmii_txd = part6;
+						ELSIF data_counter = 7 THEN 
+							gmii_txd = part7;
+						ELSE   
+							data_counter= 0;
+				gmii_txer <= '0';
+				gmii_txen <= '1';
+				avalon_endofpacket <= '0';
+				avalon_valid <= '1';
+			WHEN SEND_ERROR =>
+				gmii_txd <= x"0e";
+				gmii_txer <='1';
+				gmii_txen <='1';
+				avlaon_valid <='0';
+				avalon_endofpacket <= '0';
+				
 		END CASE;
 	END PROCESS;
 	
