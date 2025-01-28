@@ -27,7 +27,7 @@ avalon_clk|	Clock signal frekvencije 125/8 MHz|
 
 Za opis signala korišteni su opisi Avalon-ST sučelja, te GMII sučelja, koji se mogu pronaći u [1] i [2].
 
-# Način rada
+## Način rada
 Način rada modula opisan je sljedećim dijagramima:
 
 Scenario 1: Transmisija podataka čija je dužina djeljiva sa 8 bez ostatka.
@@ -39,7 +39,7 @@ Scenario 2: Transmisija podataka čija je dužina djeljiva sa 8 sa ostatkom.
 Scenario 3: Transmisija podataka uz period nevalidnih podataka tokom transmisije.
 ![Slika 3](Wavedrom/wavedrom_scen_3.png "Wavedrom3")
 
-# Konačni automat 
+## Konačni automat 
 ![Slika 4](FSM/fsm_dijagram.png "FSM")
 
 # Literatura
