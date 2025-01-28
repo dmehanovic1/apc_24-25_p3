@@ -10,7 +10,7 @@ Fokus projekta je na modeliranju i implementaciji GMII predajnog interfejsa, koj
 
 **Ethernet okvir** ima jasno definisanu strukturu koja omogućava pouzdan prenos podataka na mreži. Počinje *preambulom* (7 B), koja služi za sinhronizaciju, nakon koje slijedi *Start Frame Delimiter* (SFD) od 1 bajta koji označava početak okvira. Zatim slijede *odredišna* (6 B) i *izvorišna* adresa (6 B), koje omogućavaju precizno usmjeravanje podataka. Polje *Type/Length* (2 B) označava dužinu okvira ili tip protokola. *Payload* (46–1500 B) sadrži korisne informacije, uz dodatni "padding" ako je potrebno ispuniti minimalnu dužinu. Na kraju, *Frame Check Sequence* (FCS) od 4 bajta, sa CRC vrijednošću, provjerava integritet okvira i detektuje greške nastale tokom prenosa [4].
 
-## Opis ulaznih i izlaznih signala
+## Opis ulaznih i izlaznih signala modula
 
 Ulazni signali u modul su dati u tablici ispod.
 
