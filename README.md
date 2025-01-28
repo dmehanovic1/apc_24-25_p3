@@ -8,6 +8,8 @@ Fokus projekta je na modeliranju i implementaciji GMII predajnog interfejsa, koj
 
 **Avalon-ST** (eng. *Avalon Streaming Interface*) predstavlja jedan od ključnih standarda unutar Avalon interfejsa, dizajniran za prenos podataka u jednom smjeru, uključujući višekanalne tokove, pakete i podatke za digitalnu obradu signala (*DSP*). Podržava sekvencijalni prenos podataka, sa ili bez *backpressure* mehanizma, te omogućava visoke brzine prenosa u sklopu FPGA dizajna. Karakterišu ga fleksibilnost u oblikovanju paketa podataka, podrška za različite režime toka podataka (*sink* i *source*), te mogućnost kontrole prenosa pomoću signala kao što su *valid*, *ready*, i *startofpacket/endofpacket*. Široko se koristi u aplikacijama kao što su mrežni procesori, DSP sistemi i prilagođeni hardver za obradu podataka [3].
 
+**Ethernet okvir**
+
 ## Opis ulaznih i izlaznih signala
 
 Ulazni signali u modul su dati u tablici ispod.
