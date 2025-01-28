@@ -48,7 +48,7 @@ Scenario 3: Transmisija podataka uz period nevalidnih podataka tokom transmisije
 ![Slika 4](FSM/fsm_dijagram.png "FSM")
 
 # Literatura
-[1] B. Cheng, "Implementing GMII Interface on C-5," C-PORT CORPORATION, Rev. 1.1, Dec. 2, 2001. Dostupno: www.freescale.com.
+[1] B. Cheng, "Implementing GMII Interface on C-5," C-PORT CORPORATION, Rev. 1.1, Dec. 2, 2001. Dostupno na: www.freescale.com.
 
 [2] E.Kaljić, "Predavanje 7" iz predmeta Arhitekture paketskih čvorišta, ak. 2024/2025.
 
