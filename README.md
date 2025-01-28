@@ -1,9 +1,9 @@
 # GMII predajni interfejs
 ## Uvod
-GMII (eng. *Gigabit Media-Independent Interface*) je sučelje za prenos podataka između MAC i PHY kontrolera. Podaci se prenose u oktetima od LSB prema MSB, pri čemu se za generisanje takta koristi frekvencija 125 MHz [1]. Logika se obavlja na uzlaznu ivicu taktnog signala.
+GMII (eng. *Gigabit Media-Independent Interface*) je standardizirano sučelje definisano od strane IEEE 802.3 za povezivanje Media Access Control (MAC) sloja i fizičkog sloja (PHY) u Gigabit Ethernet mrežama. Dizajniran je da bude nezavisan od vrste fizičkog medija, omogućavajući univerzalnu komunikaciju između različitih uređaja [1]. Podaci se prenose u oktetima od LSB prema MSB [2], pri čemu se za generisanje takta koristi frekvencija od 125 MHz. GMII podržava prenos podataka brzinom od 1 Gbps u oba smjera (full-duplex), što ga čini ključnim za postizanje visokih performansi i interoperabilnosti u mrežnim sistemima. Također, omogućava lakšu integraciju različitih PHY uređaja sa MAC slojevima, čime se pojednostavljuje razvoj i implementacija mreža [1]. Logika se obavlja na uzlaznu ivicu taktnog signala.
 
 ## Opis projekta 
-Fokus projekta je na modeliranju i implementaciji GMII (*Gigabit Media-Independent Interface*) predajnog interfejsa, koji putem ulaznog 64-bitnog Avalon-ST interfejsa prima odlazni Ethernet okvir (počinje odredišnom adresom a završava FCS poljem), te na izlazni GMII interfejs generiše preambulu, SFD te oktete odlaznog Ethernet okvira.
+Fokus projekta je na modeliranju i implementaciji GMII predajnog interfejsa, koji putem ulaznog 64-bitnog Avalon-ST interfejsa prima odlazni Ethernet okvir (počinje odredišnom adresom a završava FCS poljem), te na izlazni GMII interfejs generiše preambulu, SFD te oktete odlaznog Ethernet okvira.
 
 ## Opis ulaznih i izlaznih signala
 
@@ -27,7 +27,7 @@ gmii_txen|	Indikacija aktivne transmisije|
 gmii_clk|	Clock signal frekvencije 125 MHz|
 avalon_clk|	Clock signal frekvencije 125/8 MHz|
 
-Za opis signala korišteni su opisi Avalon-ST sučelja, te GMII sučelja, koji se mogu pronaći u [1] i [2].
+Za opis signala korišteni su opisi Avalon-ST sučelja, te GMII sučelja, koji se mogu pronaći u [2] i [3].
 
 ## Način rada
 Način rada modula opisan je sljedećim dijagramima:
@@ -45,6 +45,8 @@ Scenario 3: Transmisija podataka uz period nevalidnih podataka tokom transmisije
 ![Slika 4](FSM/fsm_dijagram.png "FSM")
 
 # Literatura
-[1] E.Kaljić, "Predavanje 7" iz predmeta Arhitekture paketskih čvorišta, ak. 2024/2025.
+[1] B. Cheng, "Implementing GMII Interface on C-5," C-PORT CORPORATION, Rev. 1.1, Dec. 2, 2001. Dostupno: www.freescale.com.
 
-[2] Avalon Interface Specification, Intel Quartus Prime Design Suite 20.1, v2022.01.24
+[2] E.Kaljić, "Predavanje 7" iz predmeta Arhitekture paketskih čvorišta, ak. 2024/2025.
+
+[3] Avalon Interface Specification, Intel Quartus Prime Design Suite 20.1, v2022.01.24
