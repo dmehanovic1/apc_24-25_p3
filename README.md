@@ -4,7 +4,6 @@ Fokus projekta je na modeliranju i implementaciji GMII (*Gigabit Media-Independe
 
 GMII (eng. *Gigabit Media-Independent Interface*) je sučelje za prenos podataka između MAC i PHY kontrolera. Podaci se prenose u oktetima od LSB prema MSB, pri čemu se za generisanje takta koristi frekvencija 125 MHz [1]. Logika se obavlja na uzlaznu ivicu taktnog signala.
 ## Opis ulaznih i izlaznih signala
-Označimo komponentu koju modeliramo i imamo za cilj implementirati sa MY_GMII_TX. 
 
 Ulazni signali u modul su dati u tablici ispod.
 
