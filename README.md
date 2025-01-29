@@ -16,13 +16,13 @@ Ulazni signali u modul su dati u tablici ispod.
 
 |Signal|Opis|
 |--|:-----:|
-|avalon_data [63:0]	|Signal koji sadrži podatke koji se prenose.|
+reset|	Signal za reset|
+clk|	Clock signal frekvencije 125 MHz|
+avalon_data [63:0]	|Signal koji sadrži podatke koji se prenose.|
 avalon_valid|	Indikator validnih podataka|
 avalon_empty|	Indikator broja simbola koji su ostali prazni prilikom prenosa.|
 avalon_endofpacket|	Indikator kraja paketa.|
 avalon_startofpacket|	Indikator početka paketa.|
-reset|	Signal za reset|
-clk|	Clock signal frekvencije 125 MHz|
 
 Izlazni signali modula su dati u tablici ispod:
 |Signal|Opis|
