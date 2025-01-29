@@ -18,6 +18,7 @@ Ulazni signali u modul su dati u tablici ispod.
 |--|:-----:|
 reset|	Signal za reset|
 clk|	Clock signal frekvencije 125 MHz|
+gmii_clk|	Clock signal frekvencije 125 MHz|
 avalon_data [63:0]	|Signal koji sadrži podatke koji se prenose.|
 avalon_valid|	Indikator validnih podataka|
 avalon_empty|	Indikator broja simbola koji su ostali prazni prilikom prenosa.|
@@ -27,7 +28,6 @@ avalon_startofpacket|	Indikator početka paketa.|
 Izlazni signali modula su dati u tablici ispod:
 |Signal|Opis|
 |------------|:-----:|
-gmii_clk|	Clock signal frekvencije 125 MHz|
 gmii_txen|	Indikacija aktivne transmisije|
 gmii_txd [7:0]|	Transmitirani podaci|
 gmii_txer| Indikacija da u transmitovanim podacima postoji greška|
