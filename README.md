@@ -27,9 +27,10 @@ clk|	Clock signal frekvencije 125 MHz|
 Izlazni signali modula su dati u tablici ispod:
 |Signal|Opis|
 |------------|:-----:|
-gmii_txd [7:0]|	Transmitirani podaci|
-gmii_txen|	Indikacija aktivne transmisije|
 gmii_clk|	Clock signal frekvencije 125 MHz|
+gmii_txen|	Indikacija aktivne transmisije|
+gmii_txd [7:0]|	Transmitirani podaci|
+gmii_txer| Indikacija da u transmitovanim podacima postoji greška|
 avalon_clk|	Clock signal frekvencije 125/8 MHz|
 
 Za opis signala korišteni su opisi Avalon-ST sučelja, te GMII sučelja, koji se mogu pronaći u [2] i [3].
