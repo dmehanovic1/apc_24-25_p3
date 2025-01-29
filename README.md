@@ -13,7 +13,7 @@ Fokus projekta je na modeliranju i implementaciji GMII predajnog interfejsa, koj
 ## Opis ulaznih i izlaznih signala modula
 
 Ulazni signali u modul su dati u tablici ispod.
-<div align="center">
+
 |Signal|Opis|
 |--|:-----:|
 reset|	Signal za reset|
@@ -24,7 +24,7 @@ avalon_valid|	Indikator validnih podataka|
 avalon_empty|	Indikator broja simbola koji su ostali prazni prilikom prenosa.|
 avalon_endofpacket|	Indikator kraja paketa.|
 avalon_startofpacket|	Indikator početka paketa.|
-</div>
+
 Izlazni signali modula su dati u tablici ispod:
 |Signal|Opis|
 |------------|:-----:|
