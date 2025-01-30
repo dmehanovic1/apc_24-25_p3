@@ -6,7 +6,7 @@ ENTITY gmii_transmitter IS
     PORT (
         clk                 : IN STD_LOGIC;  
         reset               : IN STD_LOGIC;
-        avalon_clk          : IN STD_LOGIC;  
+        avalon_clk          : OUT STD_LOGIC;  
         avalon_data         : IN STD_LOGIC_VECTOR(63 DOWNTO 0);
         avalon_valid        : IN STD_LOGIC;
         avalon_empty        : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
@@ -14,8 +14,8 @@ ENTITY gmii_transmitter IS
         avalon_endofpacket  : IN STD_LOGIC;
         gmii_txd            : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
         gmii_txen           : OUT STD_LOGIC;
-        gmii_txer           : OUT STD_LOGIC;
-        gmii_clk            : IN STD_LOGIC
+        gmii_txer           : OUT STD_LOGIC
+        --gmii_clk            : IN STD_LOGIC
     );
 END ENTITY gmii_transmitter;
 
@@ -27,6 +27,7 @@ ARCHITECTURE behavioral OF gmii_transmitter IS
     SIGNAL gmii_txen_internal        : STD_LOGIC;
     SIGNAL gmii_txer_internal        : STD_LOGIC := '0';
     SIGNAL data_counter              : INTEGER RANGE 0 TO 7 := 0;
+    SIGNAL avalon_clk_internal       : STD_LOGIC := '0';
 
     -- Registracija Avalon signala
     SIGNAL avalon_data_reg           : STD_LOGIC_VECTOR(63 DOWNTO 0);
@@ -36,8 +37,27 @@ ARCHITECTURE behavioral OF gmii_transmitter IS
     SIGNAL avalon_empty_reg          : STD_LOGIC_VECTOR(2 DOWNTO 0);
 BEGIN
 
+    -- Generisanje avalon_clk signala kao clk/8
+    PROCESS(clk, reset)
+    BEGIN
+        IF reset = '1' THEN
+            internal_counter <= (OTHERS => '0');
+            avalon_clk_internal <= '0';
+        ELSIF rising_edge(clk) THEN
+            IF internal_counter >= "100" THEN  -- 4. ciklus
+                avalon_clk_internal <= '1';
+            ELSE  
+                avalon_clk_internal <= '0';
+                --internal_counter <= (OTHERS => '0');
+                 END IF;
+					  internal_counter <= std_logic_vector(unsigned(internal_counter) + 1);
+        END IF;
+    END PROCESS;
+    
+    avalon_clk <= avalon_clk_internal;
+
     -- Registracija Avalon signala na uzlaznu ivicu avalon_clk
-    PROCESS(avalon_clk, reset)
+    PROCESS(avalon_clk_internal, reset)
     BEGIN
         IF reset = '1' THEN
             avalon_data_reg <= (OTHERS => '0');
@@ -45,7 +65,7 @@ BEGIN
             avalon_startofpacket_reg <= '0';
             avalon_endofpacket_reg <= '0';
             avalon_empty_reg <= (OTHERS => '0');
-        ELSIF RISING_EDGE(avalon_clk) THEN
+        ELSIF RISING_EDGE(avalon_clk_internal) THEN
             avalon_data_reg <= avalon_data;
             avalon_valid_reg <= avalon_valid;
             avalon_startofpacket_reg <= avalon_startofpacket;
@@ -113,17 +133,11 @@ BEGIN
                 END IF;
 
             WHEN SEND_ERROR =>
-                gmii_txer_internal <= '1';
+                gmii_txer_internal <= '0';
                 gmii_txen_internal <= '1';
                 gmii_txd_internal <= x"0E"; 
-                IF gmii_txer_internal = '0' THEN
-                    next_state <= SEND_DATA;
-                ELSE
-                    next_state <= IDLE; 
-                END IF;
+                next_state <= SEND_DATA;
 
-            WHEN OTHERS =>
-                next_state <= IDLE;
         END CASE;
     END PROCESS;
 
