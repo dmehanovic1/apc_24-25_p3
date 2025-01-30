@@ -114,14 +114,14 @@ BEGIN
                 gmii_txen_internal <= '1';
                 IF avalon_valid_reg = '1' THEN
                     CASE data_counter IS
-                        WHEN 0 => gmii_txd_internal <= avalon_data_reg(7 DOWNTO 0);
-                        WHEN 1 => gmii_txd_internal <= avalon_data_reg(15 DOWNTO 8);
-                        WHEN 2 => gmii_txd_internal <= avalon_data_reg(23 DOWNTO 16);
-                        WHEN 3 => gmii_txd_internal <= avalon_data_reg(31 DOWNTO 24);
-                        WHEN 4 => gmii_txd_internal <= avalon_data_reg(39 DOWNTO 32);
-                        WHEN 5 => gmii_txd_internal <= avalon_data_reg(47 DOWNTO 40);
-                        WHEN 6 => gmii_txd_internal <= avalon_data_reg(55 DOWNTO 48);
-                        WHEN 7 => gmii_txd_internal <= avalon_data_reg(63 DOWNTO 56);
+                        WHEN 0 => gmii_txd_internal <= avalon_data_reg(63 DOWNTO 56);
+                        WHEN 1 => gmii_txd_internal <= avalon_data_reg(55 DOWNTO 48);
+                        WHEN 2 => gmii_txd_internal <= avalon_data_reg(47 DOWNTO 40);
+                        WHEN 3 => gmii_txd_internal <= avalon_data_reg(39 DOWNTO 32);
+                        WHEN 4 => gmii_txd_internal <= avalon_data_reg(31 DOWNTO 24);
+                        WHEN 5 => gmii_txd_internal <= avalon_data_reg(23 DOWNTO 16);
+                        WHEN 6 => gmii_txd_internal <= avalon_data_reg(15 DOWNTO 8);
+                        WHEN 7 => gmii_txd_internal <= avalon_data_reg(7 DOWNTO 0);
                         WHEN OTHERS => gmii_txd_internal <= (OTHERS => '0');
                     END CASE;
 
